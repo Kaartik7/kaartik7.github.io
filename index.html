@@ -7,6 +7,39 @@
 		Kaartik Issar's Home page
 	</title>
 	<style type="text/css">
+
+
+		.wrapper {
+		  height: 50vh;
+		  /*This part is important for centering*/
+		  display: grid;
+		  place-items: center;
+		}
+
+		.typing-demo {
+		  width: 27ch;
+		  animation: typing 2s steps(22), blink .5s step-end infinite alternate;
+		  white-space: nowrap;
+		  overflow: hidden;
+		  border-right: 3px solid;
+		  font-family: monospace;
+		  font-size: 5em;
+		}
+
+		@keyframes typing {
+		  from {
+		    width: 0
+		  }
+		}
+		    
+		@keyframes blink {
+		  50% {
+		    border-color: transparent
+		  }
+		}
+
+
+
 		.first{
 			height: 100px;
 			width: 420px;
@@ -45,22 +78,58 @@
 			margin-left: 625px;
 
 		}
+
+		.first .an {
+            display: flex;
+            color: #354259;
+        }
+  
+        span::before {
+            content: " ";
+            animation: animate infinite 10s;
+            padding-left: 10px;
+        }
+  
+        @keyframes animate {
+
+  
+            33% {
+                content: "Coder";
+                color: #cfe0e8;
+            }
+  
+            66% {
+                content: "Developer";
+                color: #622569
+
+;
+            }
+  
+            100% {
+                content: "Innovator";
+                color: #ff6f69;
+            }
+
+
+  
+        }
 		
 	</style>
 </head>
 <body>
 	<div class="first">
-		<marquee ="scroll" scrollamount="1" direction="down">Hi, I am Kaartik </marquee>
-		<marquee ="scroll" scrollamount="1" direction="up">I am a learner and developer</marquee>
+		Hi, I am Kaartik 
+		<div class="an">I am a <span> </span></div>
 	</div>
 	<div class="two">
 		<div class="three">
-				Home | About Me | Projects | CV | Contact Me
+				<a href="index.html" style="color: white">Home</a> | <a href="aboutme.html" style="color: white">About Me</a> | Projects | CV | Contact Me
 		</div>
 	</div>
-	<div class="four">
-		<img src="w2.jpeg" width="100%" height="400px" >
-		<div class="centered"><font color="white" family="cambria" size="50px"><font color="#F9F6EE	">This</font><font color="#E9DCC9"> is</font> <font color="#FFFFFF	">my</font> <font color="#FFFFF0	">Personal</font> <font color="#FAF9F6	">Website</font> </font></div>
+	<div class="wrapper">
+    <div class="typing-demo">
+      		This is my Personal Website
+    </div>
 	</div>
 	<div class="five">
 		<div class="six">
