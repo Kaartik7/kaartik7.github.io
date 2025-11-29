@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8" />
@@ -6,36 +6,123 @@
     <title>Kaartik Issar | Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
     <style>
-      .typing-text { font-family: 'Inter', sans-serif; font-weight:700; color: var(--accent); }
+      /* colour palette variables */
       :root {
         --bg: #0f0f1a;
         --text: #f5f5f5;
         --accent: #48e5c2;
         --muted: #999;
+        --nav-height: 60px;
       }
-      * { margin: 0; padding: 0; box-sizing: border-box; }
-      body { background: var(--bg); color: var(--text); font-family: "Inter", sans-serif; }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: "Inter", sans-serif;
+      }
+
+      /* reposition navigation bar to the top */
       nav {
-        position: fixed; top: 0; left: 0; width: 160px; height: 100%;
-        background-color: #121222; display: flex; flex-direction: column;
-        align-items: center; padding: 2rem 1rem;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: var(--nav-height);
+        background-color: #121222;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
       }
-      nav a { color: var(--accent); text-decoration: none; margin: 0.75rem 0; font-weight: 600; }
-      section, header { margin-left: 160px; padding: 5rem 2rem; max-width: 900px; }
-      .bg-video { position: absolute; top: 0; left: 160px; width: calc(100% - 160px); height: 100vh; object-fit: cover; z-index: -1; filter: brightness(0.25); }
-      header { height: 100vh; display: flex; flex-direction: column; justify-content: center; }
-      .name { font-size: 3rem; font-weight: 700; background: linear-gradient(90deg, var(--accent), #7fffd4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-      .bio { margin-top: 1.5rem; line-height: 1.8; max-width: 720px; }
-      .section-title { font-size: 1.6rem; font-weight: 600; color: var(--accent); margin-bottom: 1.5rem; }
-      .card {
-        background: #181824; padding: 1.5rem; border-radius: 10px;
+
+      nav a {
+        color: var(--accent);
+        text-decoration: none;
+        margin: 0 1rem;
+        font-weight: 600;
+      }
+
+      /* adjust content to sit below the top navigation */
+      header,
+      section {
+        padding: calc(var(--nav-height) + 2rem) 2rem 5rem;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      header {
+        height: calc(100vh - var(--nav-height));
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+      }
+
+      /* background video fills area beneath nav */
+      .bg-video {
+        position: fixed;
+        top: var(--nav-height);
+        left: 0;
+        width: 100%;
+        height: calc(100vh - var(--nav-height));
+        object-fit: cover;
+        z-index: -1;
+        filter: brightness(0.25);
+      }
+
+      .name {
+        font-size: 3rem;
+        font-weight: 700;
+        background: linear-gradient(90deg, var(--accent), #7fffd4);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .bio {
+        margin-top: 1.5rem;
+        line-height: 1.8;
+        max-width: 720px;
+      }
+
+      .section-title {
+        font-size: 1.6rem;
+        font-weight: 600;
+        color: var(--accent);
         margin-bottom: 1.5rem;
       }
-      .footer { margin-left:160px; text-align:center; margin-top:5rem; padding-bottom:2rem; color:var(--muted); }
-      ul { line-height: 1.8; }
+
+      .card {
+        background: #181824;
+        padding: 1.5rem;
+        border-radius: 10px;
+        margin-bottom: 1.5rem;
+      }
+
+      .footer {
+        text-align: center;
+        margin: 5rem auto 2rem;
+        color: var(--muted);
+      }
+
+      ul {
+        line-height: 1.8;
+      }
+
+      .typing-text {
+        font-family: 'Inter', sans-serif;
+        font-weight: 700;
+        color: var(--accent);
+      }
     </style>
   </head>
   <body>
+    <!-- top navigation bar -->
     <nav>
       <a href="#about">About</a>
       <a href="#experience">Professional Experience</a>
@@ -51,21 +138,20 @@
 
     <header>
       <h1 class="name">Kaartik Issar</h1>
-      <div class="typing-text" id="typing" style="font-size:1.5rem; margin-top:0.6rem; color:var(--accent); font-weight:700; letter-spacing:1px; text-shadow:0 0 12px #48e5c280;"></div>
+      <div class="typing-text" id="typing" style="font-size:1.5rem; margin-top:0.6rem; letter-spacing:1px; text-shadow:0 0 12px #48e5c280;"></div>
       <p class="bio">
-        Data Science & AI professional with experience in machine learning, data engineering,
+        Data Science &amp; AI professional with experience in machine learning, data engineering,
         large‑scale pipelines, predictive modelling, and educational/clinical AI systems.
+        I am an activist for fair and interpretible modelling in industry and humanx contexts.
         Graduate of the University of Toronto with High Distinction in Computer Science and Statistics.
       </p>
-          <div class="typing-text" id="typing"></div>
     </header>
-
 
     <section id="about">
       <h2 class="section-title">About Me</h2>
       <div class="card">
         <p>
-          I am a data scientist and machine learning engineer with experience building
+          I am a data enthusiast with experience building
           end‑to‑end pipelines, predictive models, NLP systems, and scalable cloud workflows.
           I have worked across industry, research labs, and government organisations, using ML
           to solve problems in education, healthcare, telecommunications, and public policy.
@@ -83,18 +169,18 @@
 
       <div class="card">
         <h3>Bell Canada — Data Engineering Developer</h3>
-        <p><em>Jul 2024 – Present | Toronto, Canada</em></p>
+        <p><em>Jul 2024 - Present | Toronto, Canada</em></p>
         <ul>
           <li>Built data pipelines in GCP and SAS migrating 10M+ customers to Bell’s new Contact Centre AI Platform.</li>
           <li>Fine‑tuned voice‑transcription models and built regex pipelines for sensitive‑data redaction.</li>
-          <li>Developed anomaly‑detection using Isolation Forest & statistical thresholds.</li>
+          <li>Developed anomaly‑detection using Isolation Forest &amp; statistical thresholds.</li>
           <li>Built a code translation model using Vertex AI to convert SAS ETL workflows to GCP pipelines.</li>
         </ul>
       </div>
 
       <div class="card">
         <h3>Akiko Sherman Infotech — Founding Data Science Engineer</h3>
-        <p><em>Apr 2024 – Present | Remote, India</em></p>
+        <p><em>Apr 2024 - Present | Remote, India</em></p>
         <ul>
           <li>Leading development of an AI diagnostic platform for early disease detection.</li>
           <li>Designed NLP + ML pipelines for lab data and clinical notes.</li>
@@ -105,7 +191,7 @@
 
       <div class="card">
         <h3>Kuarts Inc — Data Science Intern</h3>
-        <p><em>Jan 2024 – Apr 2024 | Toronto, Canada</em></p>
+        <p><em>Jan 2024 - Apr 2024 | Toronto, Canada</em></p>
         <ul>
           <li>Developed NLP pipelines for extracting financial data from semi‑structured documents.</li>
           <li>Used OCR + Adobe APIs for automated text extraction.</li>
@@ -115,9 +201,9 @@
 
       <div class="card">
         <h3>Bell Canada — AI/Data Engineering Intern</h3>
-        <p><em>May 2023 – Aug 2023 | Toronto, Canada</em></p>
+        <p><em>May 2023 - Aug 2023 | Toronto, Canada</em></p>
         <ul>
-          <li>Built forecasting models (ARIMA, Prophet) for SLA adherence & job success.</li>
+          <li>Built forecasting models (ARIMA, Prophet) for SLA adherence &amp; job success.</li>
           <li>Created Airflow DAGs for deployment workflows.</li>
           <li>Built dashboards in MicroStrategy for monitoring operational KPIs.</li>
         </ul>
@@ -125,7 +211,7 @@
 
       <div class="card">
         <h3>Akiko Sherman Infotech — Data Science Intern</h3>
-        <p><em>Apr 2022 – Aug 2022 | New Delhi, India</em></p>
+        <p><em>Apr 2022 - Aug 2022 | New Delhi, India</em></p>
         <ul>
           <li>Built ML models for agricultural forecasting (LSTM, gradient boosting).</li>
           <li>Developed real‑time IoT + satellite pipelines with Airflow + GCP.</li>
@@ -137,10 +223,12 @@
     <section id="research">
       <h2 class="section-title">Research Experience</h2>
 
+      <!-- Data science researcher at Cluster Innovation Centre -->
       <div class="card">
-        <h3>Cluster Innovation Centre — Data Science Researcher</h3>
-        <p><em>Aug 2024 – Present</em></p>
+        <h3>Cluster Innovation Centre — Data Science Researcher <a href="Peer-Review-Email-Research.pdf" target="_blank">(link)</a></h3>
+        <p><em>Aug 2024 - Present</em></p>
         <ul>
+          <li>The work derived from my time at Cluster Innovation Centre has resulted in an independent research paper now under peer-review at Journal Revista de Psicología. </li>
           <li>Built ML pipelines modelling non‑linear student achievement drivers.</li>
           <li>Used MI, correlation maps, and multicollinearity analysis to extract structural patterns.</li>
           <li>Designed teacher‑oriented AI frameworks for actionable educational insights.</li>
@@ -148,9 +236,10 @@
         </ul>
       </div>
 
+      <!-- NCERT research assistant -->
       <div class="card">
-        <h3>National Centre for Literacy (Ministry of Education, GOI) — ML Research Assistant</h3>
-        <p><em>Jan 2023 – Jul 2023</em></p>
+        <h3>National Centre for Literacy (Ministry of Education, GOI) — ML Research Assistant <a href="Prof-Usha-Sharma-Letter-of-appreciation.pdf" target="_blank">(link)</a></h3>
+        <p><em>Jan 2023 - Jul 2023</em></p>
         <ul>
           <li>Modelled literacy progression using nationwide assessment datasets.</li>
           <li>Built preprocessing + feature‑engineering pipelines at scale.</li>
@@ -158,13 +247,25 @@
         </ul>
       </div>
 
+      <!-- CHAI Labs research -->
       <div class="card">
-        <h3>CHAI Labs, University of Toronto — Research Assistant</h3>
-        <p><em>Dec 2021 – Apr 2022</em></p>
+        <h3>CHAI Labs, University of Toronto — Research Assistant <a href="https://chai.cs.toronto.edu/alumni/" target="_blank">(link)</a></h3>
+        <p><em>Dec 2021 - Apr 2022</em></p>
         <ul>
-          <li>Built secure ETL pipelines integrating Dexcom & Fitbit APIs.</li>
+          <li>Built secure ETL pipelines integrating Dexcom &amp; Fitbit APIs.</li>
           <li>Automated participant‑ops through bots linked to study‑tracking.</li>
           <li>Designed bias‑minimised survey frameworks and research workflows.</li>
+        </ul>
+      </div>
+
+      <!-- Cluster Innovation Centre - Computational Mathematics Research Assistant (new) -->
+      <div class="card">
+        <h3>Cluster Innovation Centre — Computational Mathematics Research Assistant <a href="https://link.springer.com/article/10.1007/s12045-020-1057-0" target="_blank">(link)</a></h3>
+        <p><em>Apr 2020 - Sept 2020</em></p>
+        <ul>
+          <li>Implemented complex‑number transformations and matrix‑based geometric algorithms using MATLAB to model pentagonal tilings.</li>
+          <li>Developed simulation scripts to verify tiling constraints, generate visualisations, and support reproducible computational experiments for the Springer‑published study.</li>
+          <li>Collaborated on mathematical derivations and computational validation pipelines, contributing to the final publication.</li>
         </ul>
       </div>
     </section>
@@ -173,7 +274,7 @@
       <h2 class="section-title">Data Science for Social Good</h2>
 
       <div class="card">
-        <h3>MajorMatch.ai — Non‑profit (College Major Guidance)</h3>
+        <h3>MajorMatch.ai — Non‑profit (College Major Guidance)  <a href="https://majormatch.github.io/majormatch/" target="_blank">(website)</a> <a href="SD-Public-School-Letter-Of-Appreciation" target="_blank">(link)</a></h3>
         <p><em>Data‑driven counselling for students</em></p>
         <ul>
           <li>MajorMatch.ai uses academic strengths, interests and Big Five personality profiles to provide compassionate, data‑backed major recommendations.</li>
@@ -183,8 +284,8 @@
       </div>
 
       <div class="card">
-        <h3>Resource Person — STEM Ignite Workshops</h3>
-        <p><em>Community outreach & mentoring</em></p>
+        <h3>Resource Person — STEM Ignite Workshops <a href="SD-Public-School-Letter-Of-Appreciation" target="_blank">(link)</a></h3>
+        <p><em>Community outreach &amp; mentoring</em></p>
         <ul>
           <li>Conducted hands‑on workshops for 200+ students teaching website development and applied data concepts.</li>
           <li>Helped organise the event logistics, curricula and mentoring tracks for student projects.</li>
@@ -192,16 +293,7 @@
       </div>
 
       <div class="card">
-        <h3>SightingMath — Assistive Math Tools for Blind Students</h3>
-        <p><em>Design, modelling & education</em></p>
-        <ul>
-          <li>Designed and 3D‑printed tactile mathematical tools for visually impaired learners.</li>
-          <li>Taught students how to 3D print and use generative AI and coding to prototype accessible learning aids.</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h3>CEVOpen — AI Intern (Climate Literature Mining)</h3>
+        <h3>Semantic Climate — AI Intern (Climate Literature Mining) <a href="https://semanticclimate.github.io/p/en/team/" target="_blank">(link)</a></h3>
         <p><em>AI tools for climate research</em></p>
         <ul>
           <li>Built tooling to extract and structure insights from UN climate reports and public literature.</li>
@@ -215,10 +307,10 @@
       <h2 class="section-title">Teaching Experience</h2>
       <div class="card">
         <h3>Teaching Assistant — STA313: Data Visualisation</h3>
-        <p><em>University of Toronto | Jan 2024 – Apr 2024</em></p>
+        <p><em>University of Toronto | Jan 2024 - Apr 2024</em></p>
         <ul>
           <li>Led tutorials for 100+ students on ggplot2, R Shiny, Altair, Tableau.</li>
-          <li>Mentored visual storytelling & data‑ethics projects.</li>
+          <li>Mentored visual storytelling &amp; data‑ethics projects.</li>
           <li>Built grading rubrics and provided 1‑on‑1 support.</li>
         </ul>
       </div>
@@ -234,28 +326,37 @@
 
     <div class="footer">© 2025 Kaartik Issar</div>
 
-  <script>
-  const roles = [
-    "Data Science Enthusiast",
-    "Developer",
-    "Innovator",
-    "Researcher",
-    "Learner"
-  ];
-  let idx = 0, char = 0, deleting = false;
-  const el = document.getElementById('typing');
-  function typeEffect(){
-    const word = roles[idx];
-    if(!deleting){
-      el.textContent = word.substring(0, char++);
-      if(char > word.length){ deleting = true; setTimeout(typeEffect, 1000); return; }
-    } else {
-      el.textContent = word.substring(0, char--);
-      if(char < 0){ deleting = false; idx = (idx+1)%roles.length; }
-    }
-    setTimeout(typeEffect, deleting ? 50 : 80);
-  }
-  typeEffect();
-</script>
-</body>
+    <script>
+      const roles = [
+        "Data Science Enthusiast",
+        "Developer",
+        "Innovator",
+        "Researcher",
+        "Learner"
+      ];
+      let idx = 0,
+        char = 0,
+        deleting = false;
+      const el = document.getElementById('typing');
+      function typeEffect() {
+        const word = roles[idx];
+        if (!deleting) {
+          el.textContent = word.substring(0, char++);
+          if (char > word.length) {
+            deleting = true;
+            setTimeout(typeEffect, 1000);
+            return;
+          }
+        } else {
+          el.textContent = word.substring(0, char--);
+          if (char < 0) {
+            deleting = false;
+            idx = (idx + 1) % roles.length;
+          }
+        }
+        setTimeout(typeEffect, deleting ? 50 : 80);
+      }
+      typeEffect();
+    </script>
+  </body>
 </html>
