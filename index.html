@@ -1,20 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kaartik Issar | Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+     
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
-      /* colour palette variables */
+      /*
+        my personal website
+      */
       :root {
         --bg: #0f0f1a;
         --text: #f5f5f5;
         --accent: #48e5c2;
+        --accent-light: #7fffd4;
         --muted: #999;
         --nav-height: 60px;
       }
 
+      /* Reset margins, paddings and provide a predictable box model. */
       * {
         margin: 0;
         padding: 0;
@@ -25,9 +34,10 @@
         background: var(--bg);
         color: var(--text);
         font-family: "Inter", sans-serif;
+        line-height: 1.6;
       }
 
-      /* reposition navigation bar to the top */
+
       nav {
         position: fixed;
         top: 0;
@@ -36,35 +46,59 @@
         height: var(--nav-height);
         background-color: #121222;
         display: flex;
-        justify-content: center;
         align-items: center;
+        justify-content: center;
         z-index: 1000;
+        padding: 0 2rem;
+      }
+
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
       }
 
       nav a {
         color: var(--accent);
         text-decoration: none;
-        margin: 0 1rem;
         font-weight: 600;
+        transition: color 0.2s ease;
+      }
+      nav a:hover {
+        color: var(--accent-light);
       }
 
-      /* adjust content to sit below the top navigation */
+
+      .nav-toggle {
+        display: none;
+        background: none;
+        border: none;
+        color: var(--accent);
+        font-size: 2rem;
+        cursor: pointer;
+        margin-right: auto;
+      }
+
+
       header,
       section {
         padding: calc(var(--nav-height) + 2rem) 2rem 5rem;
         max-width: 900px;
         margin: 0 auto;
+        width: 100%;
       }
 
       header {
-        height: calc(100vh - var(--nav-height));
+        min-height: calc(100vh - var(--nav-height));
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: flex-start;
+        text-align: left;
       }
 
-      /* background video fills area beneath nav */
+  
       .bg-video {
         position: fixed;
         top: var(--nav-height);
@@ -79,9 +113,15 @@
       .name {
         font-size: 3rem;
         font-weight: 700;
-        background: linear-gradient(90deg, var(--accent), #7fffd4);
+        background: linear-gradient(90deg, var(--accent), var(--accent-light));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+      }
+
+      .typing-text {
+        font-family: "Inter", sans-serif;
+        font-weight: 700;
+        color: var(--accent);
       }
 
       .bio {
@@ -112,38 +152,93 @@
 
       ul {
         line-height: 1.8;
+        padding-left: 1.2rem;
       }
 
-      .typing-text {
-        font-family: 'Inter', sans-serif;
-        font-weight: 700;
-        color: var(--accent);
+
+      @media (max-width: 768px) {
+        /* Adjust navigation bar layout */
+        nav {
+          justify-content: space-between;
+          height: auto;
+          padding: 0.5rem 1rem;
+        }
+        /* Show the hamburger button */
+        .nav-toggle {
+          display: block;
+        }
+        /* Hide links by default on mobile */
+        .nav-links {
+          position: absolute;
+          top: var(--nav-height);
+          left: 0;
+          right: 0;
+          flex-direction: column;
+          background-color: #121222;
+          padding: 1rem;
+          display: none;
+        }
+        /* When .show is added via JS, display the links */
+        .nav-links.show {
+          display: flex;
+        }
+        nav a {
+          margin: 0.5rem 0;
+          text-align: center;
+        }
+        header {
+          align-items: center;
+          text-align: center;
+        }
+        .name {
+          font-size: 2.2rem;
+        }
+        .bio {
+          margin-top: 1rem;
+        }
+        .section-title {
+          font-size: 1.4rem;
+        }
       }
     </style>
   </head>
   <body>
-    <!-- top navigation bar -->
+
     <nav>
-      <a href="#about">About</a>
-      <a href="#experience">Professional Experience</a>
-      <a href="#research">Research</a>
-      <a href="#dssg">Data Science for Social Good</a>
-      <a href="#teaching">Teaching</a>
-      <a href="#contact">Contact</a>
+      <button class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#experience">Professional Experience</a>
+        <a href="#research">Research</a>
+        <a href="#dssg">Data Science for Social Good</a>
+        <a href="#teaching">Teaching</a>
+        <a href="#contact">Contact</a>
+      </div>
     </nav>
 
+    <!-- Background video stays fixed behind the page content -->
     <video autoplay muted loop playsinline class="bg-video">
-      <source src="https://cdn.coverr.co/videos/coverr-blackboard-math-6291/1080p.mp4" type="video/mp4" />
+      <source
+        src="https://cdn.coverr.co/videos/coverr-blackboard-math-6291/1080p.mp4"
+        type="video/mp4"
+      />
     </video>
 
     <header>
       <h1 class="name">Kaartik Issar</h1>
-      <div class="typing-text" id="typing" style="font-size:1.5rem; margin-top:0.6rem; letter-spacing:1px; text-shadow:0 0 12px #48e5c280;"></div>
+      <!-- Typing effect container -->
+      <div
+        class="typing-text"
+        id="typing"
+        style="font-size: 1.5rem; margin-top: 0.6rem; letter-spacing: 1px; text-shadow: 0 0 12px #48e5c280;"
+      ></div>
       <p class="bio">
-        Data Science &amp; AI professional with experience in machine learning, data engineering,
-        large‑scale pipelines, predictive modelling, and educational/clinical AI systems.
-        I am an activist for fair and interpretible modelling in industry and humanx contexts.
-        Graduate of the University of Toronto with High Distinction in Computer Science and Statistics.
+        Data Science &amp; AI professional with experience in machine learning,
+        data engineering, large‑scale pipelines, predictive modelling, and
+        educational/clinical AI systems. I am an activist for fair and
+        interpretible modelling in industry and humanx contexts. Graduate of
+        the University of Toronto with High Distinction in Computer Science and
+        Statistics.
       </p>
     </header>
 
@@ -151,33 +246,45 @@
       <h2 class="section-title">About Me</h2>
       <div class="card">
         <p>
-          I am a data enthusiast with experience building
-          end‑to‑end pipelines, predictive models, NLP systems, and scalable cloud workflows.
-          I have worked across industry, research labs, and government organisations, using ML
-          to solve problems in education, healthcare, telecommunications, and public policy.
+          I am a data enthusiast with experience building end‑to‑end pipelines,
+          predictive models, NLP systems, and scalable cloud workflows. I have
+          worked across industry, research labs, and government organisations,
+          using ML to solve problems in education, healthcare, telecommunications,
+          and public policy.
         </p>
-        <p style="margin-top:1rem;">
-          My work spans supervised/unsupervised learning, data engineering, model deployment,
-          and AI‑driven analytics. I also have published academic work and continue to contribute
-          to applied ML research.
+        <p style="margin-top: 1rem;">
+          My work spans supervised/unsupervised learning, data engineering,
+          model deployment, and AI‑driven analytics. I also have published
+          academic work and continue to contribute to applied ML research.
         </p>
       </div>
     </section>
 
     <section id="experience">
       <h2 class="section-title">Professional Experience</h2>
-
+      <!-- Each job is represented as a card to visually separate entries -->
       <div class="card">
         <h3>Bell Canada - Data Engineering Developer</h3>
         <p><em>Jul 2024 - Present | Toronto, Canada</em></p>
         <ul>
-          <li>Built data pipelines in GCP and SAS migrating 10M+ customers to Bell’s new Contact Centre AI Platform.</li>
-          <li>Fine‑tuned voice‑transcription models and built regex pipelines for sensitive‑data redaction.</li>
-          <li>Developed anomaly‑detection using Isolation Forest &amp; statistical thresholds.</li>
-          <li>Built a code translation model using Vertex AI to convert SAS ETL workflows to GCP pipelines.</li>
+          <li>
+            Built data pipelines in GCP and SAS migrating 10M+ customers to
+            Bell’s new Contact Centre AI Platform.
+          </li>
+          <li>
+            Fine‑tuned voice‑transcription models and built regex pipelines for
+            sensitive‑data redaction.
+          </li>
+          <li>
+            Developed anomaly‑detection using Isolation Forest &amp;
+            statistical thresholds.
+          </li>
+          <li>
+            Built a code translation model using Vertex AI to convert SAS ETL
+            workflows to GCP pipelines.
+          </li>
         </ul>
       </div>
-
       <div class="card">
         <h3>Akiko Sherman Infotech - Founding Data Science Engineer</h3>
         <p><em>Apr 2024 - Present | Remote, India</em></p>
@@ -188,7 +295,6 @@
           <li>Built secure hospital‑data pipelines using GCP, BigQuery, and Airflow.</li>
         </ul>
       </div>
-
       <div class="card">
         <h3>Kuarts Inc - Data Science Intern</h3>
         <p><em>Jan 2024 - Apr 2024 | Toronto, Canada</em></p>
@@ -198,7 +304,6 @@
           <li>Integrated ML models to enhance reliability of data categorisation.</li>
         </ul>
       </div>
-
       <div class="card">
         <h3>Bell Canada - AI/Data Engineering Intern</h3>
         <p><em>May 2023 - Aug 2023 | Toronto, Canada</em></p>
@@ -208,7 +313,6 @@
           <li>Built dashboards in MicroStrategy for monitoring operational KPIs.</li>
         </ul>
       </div>
-
       <div class="card">
         <h3>Akiko Sherman Infotech - Data Science Intern</h3>
         <p><em>Apr 2022 - Aug 2022 | New Delhi, India</em></p>
@@ -222,23 +326,30 @@
 
     <section id="research">
       <h2 class="section-title">Research Experience</h2>
-
-      <!-- Data science researcher at Cluster Innovation Centre -->
       <div class="card">
-        <h3>Cluster Innovation Centre - Data Science Researcher <a href="Peer-Review-Email-Research.pdf" target="_blank">(Peer-review)</a><a href="Abstract.pdf" target="_blank">(Abstract)</a></h3>
+        <h3>
+          Cluster Innovation Centre - Data Science Researcher
+          <a href="Peer-Review-Email-Research.pdf" target="_blank">(Peer-review)</a>
+          <a href="Abstract.pdf" target="_blank">(Abstract)</a>
+        </h3>
         <p><em>Aug 2024 - Present</em></p>
         <ul>
-          <li>The work derived from my time at Cluster Innovation Centre has resulted in an independent research paper now under peer-review at Journal Revista de Psicología. </li>
+          <li>
+            The work derived from my time at Cluster Innovation Centre has
+            resulted in an independent research paper now under peer-review at
+            Journal Revista de Psicología.
+          </li>
           <li>Built ML pipelines modelling non‑linear student achievement drivers.</li>
           <li>Used MI, correlation maps, and multicollinearity analysis to extract structural patterns.</li>
           <li>Designed teacher‑oriented AI frameworks for actionable educational insights.</li>
           <li>Used neural networks to uncover hidden interaction effects.</li>
         </ul>
       </div>
-
-      <!-- NCERT research assistant -->
       <div class="card">
-        <h3>National Centre for Literacy (Ministry of Education, GOI) - ML Research Assistant <a href="Prof-Usha-Sharma-Letter-of-appreciation.pdf" target="_blank">(link)</a></h3>
+        <h3>
+          National Centre for Literacy (Ministry of Education, GOI) - ML Research Assistant
+          <a href="Prof-Usha-Sharma-Letter-of-appreciation.pdf" target="_blank">(link)</a>
+        </h3>
         <p><em>Jan 2023 - Jul 2023</em></p>
         <ul>
           <li>Modelled literacy progression using nationwide assessment datasets.</li>
@@ -246,10 +357,11 @@
           <li>Trained supervised models and performed survival analysis for dropout prediction.</li>
         </ul>
       </div>
-
-      <!-- CHAI Labs research -->
       <div class="card">
-        <h3>CHAI Labs, University of Toronto - Research Assistant <a href="https://chai.cs.toronto.edu/alumni/" target="_blank">(link)</a></h3>
+        <h3>
+          CHAI Labs, University of Toronto - Research Assistant
+          <a href="https://chai.cs.toronto.edu/alumni/" target="_blank">(link)</a>
+        </h3>
         <p><em>Dec 2021 - Apr 2022</em></p>
         <ul>
           <li>Built secure ETL pipelines integrating Dexcom &amp; Fitbit APIs.</li>
@@ -257,50 +369,69 @@
           <li>Designed bias‑minimised survey frameworks and research workflows.</li>
         </ul>
       </div>
-
-      <!-- Cluster Innovation Centre - Computational Mathematics Research Assistant (new) -->
       <div class="card">
-        <h3>Cluster Innovation Centre - Computational Mathematics Research Assistant <a href="https://link.springer.com/article/10.1007/s12045-020-1057-0" target="_blank">(link)</a></h3>
+        <h3>
+          Cluster Innovation Centre - Computational Mathematics Research Assistant
+          <a href="https://link.springer.com/article/10.1007/s12045-020-1057-0" target="_blank">(link)</a>
+        </h3>
         <p><em>Apr 2020 - Sept 2020</em></p>
         <ul>
-          <li>Implemented complex‑number transformations and matrix‑based geometric algorithms using MATLAB to model pentagonal tilings.</li>
-          <li>Developed simulation scripts to verify tiling constraints, generate visualisations, and support reproducible computational experiments for the Springer‑published study.</li>
-          <li>Collaborated on mathematical derivations and computational validation pipelines, contributing to the final publication.</li>
+          <li>
+            Implemented complex‑number transformations and matrix‑based geometric algorithms using MATLAB to model pentagonal tilings.
+          </li>
+          <li>
+            Developed simulation scripts to verify tiling constraints, generate visualisations, and support reproducible computational experiments for the Springer‑published study.
+          </li>
+          <li>
+            Collaborated on mathematical derivations and computational validation pipelines, contributing to the final publication.
+          </li>
         </ul>
       </div>
     </section>
 
     <section id="dssg">
       <h2 class="section-title">Data Science for Social Good</h2>
-
       <div class="card">
-        <h3>MajorMatch.ai - Non‑profit (College Major Guidance)  <a href="https://majormatch.github.io/majormatch/" target="_blank">(website)</a> <a href="SD-Public-School-Letter-Of-Appreciation.pdf" target="_blank">(link)</a></h3>
+        <h3>
+          MajorMatch.ai - Non‑profit (College Major Guidance)
+          <a href="https://majormatch.github.io/majormatch/" target="_blank">(website)</a>
+          <a href="SD-Public-School-Letter-Of-Appreciation.pdf" target="_blank">(link)</a>
+        </h3>
         <p><em>Data‑driven counselling for students</em></p>
         <ul>
-          <li>MajorMatch.ai uses academic strengths, interests and Big Five personality profiles to provide compassionate, data‑backed major recommendations.</li>
-          <li>Helped over <strong>500 high school students</strong> with comprehensive AI‑generated reports that reduced mismatch risk and improved clarity in stream selection.</li>
-          <li>Received a certificate of appreciation from SD Public School and launched a public website to share guidance resources.</li>
+          <li>
+            MajorMatch.ai uses academic strengths, interests and Big Five personality profiles to provide compassionate, data‑backed major recommendations.
+          </li>
+          <li>
+            Helped over <strong>500 high school students</strong> with comprehensive AI‑generated reports that reduced mismatch risk and improved clarity in stream selection.
+          </li>
+          <li>
+            Received a certificate of appreciation from SD Public School and launched a public website to share guidance resources.
+          </li>
         </ul>
       </div>
-
       <div class="card">
-        <h3>Resource Person - STEM Ignite Workshops <a href="SD-Public-School-Letter-Of-Appreciation.pdf" target="_blank">(link)</a></h3>
+        <h3>
+          Resource Person - STEM Ignite Workshops
+          <a href="SD-Public-School-Letter-Of-Appreciation.pdf" target="_blank">(link)</a>
+        </h3>
         <p><em>Community outreach &amp; mentoring</em></p>
         <ul>
           <li>Conducted hands‑on workshops for 200+ students teaching website development and applied data concepts.</li>
           <li>Helped organise the event logistics, curricula and mentoring tracks for student projects.</li>
         </ul>
       </div>
-
       <div class="card">
-        <h3>Semantic Climate - AI Intern (Climate Literature Mining) <a href="https://semanticclimate.github.io/p/en/team/" target="_blank">(link)</a></h3>
+        <h3>
+          Semantic Climate - AI Intern (Climate Literature Mining)
+          <a href="https://semanticclimate.github.io/p/en/team/" target="_blank">(link)</a>
+        </h3>
         <p><em>AI tools for climate research</em></p>
         <ul>
           <li>Built tooling to extract and structure insights from UN climate reports and public literature.</li>
           <li>Presented the work at the PIAGET Hackathon and was part of the winning team.</li>
         </ul>
       </div>
-
     </section>
 
     <section id="teaching">
@@ -318,8 +449,11 @@
 
     <section id="contact">
       <h2 class="section-title">Contact</h2>
-      <div class="card" style="text-align:center;">
-        <p>Email: <a href="mailto:kaartik.issar@alumni.utoronto.ca">kaartik.issar@alumni.utoronto.ca</a></p>
+      <div class="card" style="text-align: center;">
+        <p>
+          Email:
+          <a href="mailto:kaartik.issar@alumni.utoronto.ca">kaartik.issar@alumni.utoronto.ca</a>
+        </p>
         <p>Location: Toronto, Canada</p>
       </div>
     </section>
@@ -327,29 +461,32 @@
     <div class="footer">© 2025 Kaartik Issar</div>
 
     <script>
+      // Typing effect for the role descriptions. The logic cycles through
+      // an array of strings, typing and deleting each in turn to create a
+      // dynamic hero section.
       const roles = [
         "Data Science Enthusiast",
         "Developer",
         "Innovator",
         "Researcher",
-        "Learner"
+        "Learner",
       ];
       let idx = 0,
-        char = 0,
+        charIndex = 0,
         deleting = false;
-      const el = document.getElementById('typing');
+      const typingElement = document.getElementById("typing");
       function typeEffect() {
         const word = roles[idx];
         if (!deleting) {
-          el.textContent = word.substring(0, char++);
-          if (char > word.length) {
+          typingElement.textContent = word.substring(0, charIndex++);
+          if (charIndex > word.length) {
             deleting = true;
             setTimeout(typeEffect, 1000);
             return;
           }
         } else {
-          el.textContent = word.substring(0, char--);
-          if (char < 0) {
+          typingElement.textContent = word.substring(0, charIndex--);
+          if (charIndex < 0) {
             deleting = false;
             idx = (idx + 1) % roles.length;
           }
@@ -357,6 +494,14 @@
         setTimeout(typeEffect, deleting ? 50 : 80);
       }
       typeEffect();
+
+      // Mobile navigation toggle. Adds or removes the `.show` class on the
+      // nav-links container when the hamburger button is clicked.
+      const navToggle = document.querySelector(".nav-toggle");
+      const navLinks = document.querySelector(".nav-links");
+      navToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("show");
+      });
     </script>
   </body>
 </html>
