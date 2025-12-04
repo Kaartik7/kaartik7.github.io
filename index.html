@@ -477,45 +477,56 @@
 
     <div class="footer">© 2025 Kaartik Issar</div>
 
-    <script>
-      /* Typing Effect */
-      const roles = [
-        "Data Science Enthusiast",
-        "Developer",
-        "Innovator",
-        "Researcher",
-        "Learner"
-      ];
+   <script>
+  /* Typing Effect */
+  const roles = [
+    "Data Science Enthusiast",
+    "Developer",
+    "Innovator",
+    "Researcher",
+    "Learner"
+  ];
 
-      let idx = 0,
-        charIndex = 0,
-        deleting = false;
+  let idx = 0,
+    charIndex = 0,
+    deleting = false;
 
-      const typingElement = document.getElementById("typing");
+  const typingElement = document.getElementById("typing");
 
-      function typeEffect() {
-        const word = roles[idx];
+  function typeEffect() {
+    const word = roles[idx];
 
-        if (!deleting) {
-          typingElement.textContent = word.substring(0, charIndex++);
-          if (charIndex > word.length) {
-            deleting = true;
-            setTimeout(typeEffect, 900);
-            return;
-          }
-        } else {
-          typingElement.textContent = word.substring(0, charIndex--);
-          if (charIndex < 0) {
-            deleting = false;
-            idx = (idx + 1) % roles.length;
-          }
-        }
-
-        setTimeout(typeEffect, deleting ? 50 : 80);
+    if (!deleting) {
+      typingElement.textContent = word.substring(0, charIndex++);
+      if (charIndex > word.length) {
+        deleting = true;
+        setTimeout(typeEffect, 900);
+        return;
       }
+    } else {
+      typingElement.textContent = word.substring(0, charIndex--);
+      if (charIndex < 0) {
+        deleting = false;
+        idx = (idx + 1) % roles.length;
+      }
+    }
+    setTimeout(typeEffect, deleting ? 50 : 80);
+  }
 
-      typeEffect();
+  typeEffect();
 
-      /* Mobile Nav Toggle */
-      const navToggle = document.querySelector(".nav-toggle");
-      const navLinks = document.quer
+  /* Mobile Nav Toggle */
+  const navToggle = document.querySelector(".nav-toggle");
+  const navLinks = document.querySelector(".nav-links");
+
+  navToggle.addEventListener("click", () => {
+    navLinks.classList.toggle("show");
+  });
+
+  // Close menu after clicking a link (mobile UX improvement)
+  document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("show");
+    });
+  });
+</script>
